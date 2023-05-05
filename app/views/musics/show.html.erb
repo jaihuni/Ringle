@@ -1,0 +1,14 @@
+<h1><%= @music.title %></h1>
+
+<p><%= @music.artist %></p>
+<p><%= @music.album %></p>
+<p>like: <%= @music.like %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_music_path(@music) %></li>
+  <li><%= link_to "Destroy", music_path(@music), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
+

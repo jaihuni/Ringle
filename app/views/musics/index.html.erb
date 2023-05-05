@@ -1,0 +1,11 @@
+<h1>Musics</h1>
+
+<ul>
+  <% @musics.each do |music| %>
+    <li>
+      <%= link_to music.title, music %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Music", new_music_path %>
