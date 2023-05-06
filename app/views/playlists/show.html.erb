@@ -4,6 +4,7 @@
 
 
 <ul>
+  <li><%= link_to "Edit", edit_user_playlist_path(@playlist.user_id, @playlist) %></li>
   <li><%= link_to "Destroy", user_playlist_path(@playlist.user_id, @playlist), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"

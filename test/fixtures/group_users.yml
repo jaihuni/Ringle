@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  playlist: one
-  music: one
+  group: one
+  user: one
 
 two:
-  playlist: two
-  music: two
+  group: two
+  user: two
