@@ -9,7 +9,7 @@
 
   <div>
     <%= form.label :artist %><br>
-    <%= form.text_area :artist %><br>
+    <%= form.text_field :artist %><br>
     <% music.errors.full_messages_for(:artist).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -25,7 +25,7 @@
 
   <div>
     <%= form.label :like %><br>
-    <%= form.text_area :like %><br>
+    <%= form.text_field :like %><br>
     <% music.errors.full_messages_for(:like).each do |message| %>
       <div><%= message %></div>
     <% end %>

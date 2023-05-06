@@ -1,8 +1,4 @@
 class MusicsController < ApplicationController
-  def index
-    @musics = Music.all
-  end
-
   def show
     @music = Music.find(params[:id])
   end
@@ -35,12 +31,12 @@ class MusicsController < ApplicationController
     end
   end
 
-  def search
-    @musics = Music.all
+  def index
+    @musics = Music.select(:id, :title, :artist, :album, :like)
 
     if params[:keyword] && params[:keyword] != ""
       @musics = @musics.where("title like ? OR artist like ? OR album like ? ",
-      "%#{params[:keyword]}%","%#{params[:keyword]}%","%#{params[:keyword]}%").limit(1000)
+      "%#{params[:keyword]}%","%#{params[:keyword]}%","%#{params[:keyword]}%")
 
       if params[:sort] && params[:sort] == '1'
         @musics = @musics.order(
@@ -60,17 +56,16 @@ class MusicsController < ApplicationController
             WHEN album like '%#{params[:keyword]}%' THEN '9'
           END"))
       end
-
-      if params[:sort] && params[:sort] == '2'
-        @musics = @musics.order('like DESC')
-      end
-
-      if params[:sort] && params[:sort] == '3'
-        @musics = @musics.order('created_at ASC')
-      end
-
+    end
+    if params[:sort] && params[:sort] == '2'
+      @musics = @musics.order('like DESC')
     end
 
+    if params[:sort] && params[:sort] == '3'
+      @musics = @musics.order('created_at DESC')
+    end
+
+    @musics = @musics.limit(1000)
   end
 
 
@@ -78,7 +73,7 @@ class MusicsController < ApplicationController
     @music = Music.find(params[:id])
     @music.destroy
 
-    redirect_to "/musics", status: :see_other
+    redirect_to musics_path, status: :see_other
   end
 
   private

@@ -1,0 +1,10 @@
+<%= form_with model: [ @playlist.user, @playlist, @playlist.list_musics.build ] do |form| %>
+  <p>
+    <%= form.label :music_id %><br>
+    <%= form.text_field :music_id %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

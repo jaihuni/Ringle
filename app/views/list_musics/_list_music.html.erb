@@ -1,0 +1,8 @@
+<li>
+  <%= link_to list_music.id %>
+  <%= link_to list_music.music.title %>
+  <%= link_to "delete", [list_music.playlist.user, list_music.playlist, list_music], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+</li>

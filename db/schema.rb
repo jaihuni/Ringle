@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_02_180735) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_05_110928) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -29,6 +29,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_180735) do
     t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
+  create_table "list_musics", force: :cascade do |t|
+    t.integer "playlist_id", null: false
+    t.integer "music_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["music_id"], name: "index_list_musics_on_music_id"
+    t.index ["playlist_id"], name: "index_list_musics_on_playlist_id"
+  end
+
   create_table "musics", force: :cascade do |t|
     t.string "title"
     t.string "artist"
@@ -38,5 +47,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_180735) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "playlists", force: :cascade do |t|
+    t.string "title"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_playlists_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "comments", "articles"
+  add_foreign_key "list_musics", "musics"
+  add_foreign_key "list_musics", "playlists"
+  add_foreign_key "playlists", "users"
 end

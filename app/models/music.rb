@@ -3,4 +3,6 @@ class Music < ApplicationRecord
   validates :artist, presence: true
   validates :album, presence: true
 
+  has_many :list_musics, dependent: :destroy
+  has_many :playlists, through:list_musics
 end

@@ -1,0 +1,19 @@
+<h1><%= @user.name %></h1>
+
+<p>id: <%= @user.id %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_user_path(@user) %></li>
+  <li><%= link_to "Destroy", user_path(@user), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
+
+<h2>Playlists</h2>
+<ul>
+  <%= render @user.playlists %>
+</ul>
+
+<h2>Add a playlist:</h2>
+<%= render 'playlists/form' %>
