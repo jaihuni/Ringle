@@ -4,5 +4,5 @@ class Music < ApplicationRecord
   validates :album, presence: true
 
   has_many :list_musics, dependent: :destroy
-  has_many :playlists, through:list_musics
+  has_many :group_musics, dependent: :destroy
 end

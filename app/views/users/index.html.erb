@@ -3,9 +3,13 @@
 <ul>
   <% @users.each do |user| %>
     <li>
+      <%= user.id %>
       <%= link_to user.name, user %>
     </li>
   <% end %>
 </ul>
 
 <%= link_to "New User", new_user_path %>
+
+<h2>Add a User:</h2>
+<%= render 'form', user: @users.build %>

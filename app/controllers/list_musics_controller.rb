@@ -1,7 +1,7 @@
 class ListMusicsController < ApplicationController
   def create
     @playlist = Playlist.find(params[:playlist_id])
-    @list_music = @playlist.list_musics.create(list_music_params)
+    @playlist.list_musics.create(list_music_params)
     redirect_to user_playlist_path(@playlist.user_id, @playlist)
   end
 

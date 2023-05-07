@@ -9,14 +9,19 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :playlists do
-      resources :list_musics do
-        post "create_array", on: :collection
-        get "create_array_form", on: :collection
-        delete "destroy_array", on: :collection
-        get "destroy_array_form", on: :collection
-      end
+      resources :list_musics
+
+      post "add_musics"
+      get "add_musics"
+      delete "delete_musics"
+      get "delete_musics"
     end
   end
 
-  resources :groups
+  resources :groups do
+    resources :group_users
+    resources :group_playlists do
+      resources :group_musics
+    end
+  end
 end

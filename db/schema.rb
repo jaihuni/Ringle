@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_05_110928) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_07_070612) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -27,6 +27,40 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_110928) do
     t.datetime "updated_at", null: false
     t.string "status"
     t.index ["article_id"], name: "index_comments_on_article_id"
+  end
+
+  create_table "group_musics", force: :cascade do |t|
+    t.integer "group_playlist_id", null: false
+    t.integer "music_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_playlist_id"], name: "index_group_musics_on_group_playlist_id"
+    t.index ["music_id"], name: "index_group_musics_on_music_id"
+    t.index ["user_id"], name: "index_group_musics_on_user_id"
+  end
+
+  create_table "group_playlists", force: :cascade do |t|
+    t.string "name"
+    t.integer "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_playlists_on_group_id"
+  end
+
+  create_table "group_users", force: :cascade do |t|
+    t.integer "group_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_users_on_group_id"
+    t.index ["user_id"], name: "index_group_users_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "list_musics", force: :cascade do |t|
@@ -62,6 +96,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_110928) do
   end
 
   add_foreign_key "comments", "articles"
+  add_foreign_key "group_musics", "group_playlists"
+  add_foreign_key "group_musics", "musics"
+  add_foreign_key "group_musics", "users"
+  add_foreign_key "group_playlists", "groups"
+  add_foreign_key "group_users", "groups"
+  add_foreign_key "group_users", "users"
   add_foreign_key "list_musics", "musics"
   add_foreign_key "list_musics", "playlists"
   add_foreign_key "playlists", "users"

@@ -3,6 +3,6 @@ class User < ApplicationRecord
 
   has_many :playlists, dependent: :destroy
 
-  has_one :group_user, dependent: :destroy
-  has_many :groups, :through => :group_users
+  has_many :group_users, dependent: :destroy
+  has_many :groups, through: :group_user
 end

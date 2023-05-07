@@ -1,0 +1,25 @@
+<h1><%= @group.name %></h1>
+
+<ul>
+  <li><%= link_to "Edit", edit_group_path(@group) %></li>
+  <li><%= link_to "Destroy", group_path(@group), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
+
+<h2>Users</h2>
+<ul>
+  <%= render @group.group_users %>
+</ul>
+
+<h2>Add a User:</h2>
+<%= render 'group_users/form' %>
+
+<h2>Playlists</h2>
+<ul>
+  <%= render @group.group_playlists %>
+</ul>
+
+<h2>Add a Playlist:</h2>
+<%= render 'group_playlists/form' %>

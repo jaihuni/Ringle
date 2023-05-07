@@ -1,7 +1,5 @@
 <h1><%= @user.name %></h1>
 
-<p>id: <%= @user.id %></p>
-
 <ul>
   <li><%= link_to "Edit", edit_user_path(@user) %></li>
   <li><%= link_to "Destroy", user_path(@user), data: {
@@ -16,4 +14,4 @@
 </ul>
 
 <h2>Add a playlist:</h2>
-<%= render 'playlists/form' %>
+<%= render 'playlists/form', playlist: [ @user, @user.playlists.build ] %>

@@ -1,0 +1,6 @@
+<li>
+  <%= group_music.id %>
+  <%= link_to group_music.music.title, group_music.music %>
+  <%= link_to group_music.user.name, group_music.user %>
+  <%= link_to "delete", group_group_playlist_group_music_path(group_music.group_playlist.group_id, group_music.group_playlist, group_music) %>
+</li>
