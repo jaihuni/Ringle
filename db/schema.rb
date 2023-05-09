@@ -11,24 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_05_07_070612) do
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "status"
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.string "commenter"
-    t.text "body"
-    t.integer "article_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "status"
-    t.index ["article_id"], name: "index_comments_on_article_id"
-  end
-
   create_table "group_musics", force: :cascade do |t|
     t.integer "group_playlist_id", null: false
     t.integer "music_id", null: false
@@ -95,7 +77,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_07_070612) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "comments", "articles"
   add_foreign_key "group_musics", "group_playlists"
   add_foreign_key "group_musics", "musics"
   add_foreign_key "group_musics", "users"
