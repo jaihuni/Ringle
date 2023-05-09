@@ -22,4 +22,4 @@
 </ul>
 
 <h2>Add a Playlist:</h2>
-<%= render 'group_playlists/form' %>
+<%= render 'group_playlists/form', group_playlist: [ @group, @group.group_playlists.build ] %>

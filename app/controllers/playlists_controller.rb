@@ -31,10 +31,9 @@ class PlaylistsController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:user_id])
-    @playlist = @user.playlists.find(params[:id])
+    @playlist = Playlist.find_by(id: params[:id], user_id: params[:user_id])
     @playlist.destroy
-    redirect_to user_path(@user), status: :see_other
+    redirect_to user_path(@playlist.user_id), status: :see_other
   end
 
   def add_musics

@@ -1,30 +1,27 @@
 class GroupPlaylistsController < ApplicationController
-  def show
-    @playlist = GroupPlaylist.find_by(id: params[:id], group_id: params[:group_id])
-  end
-
   def create
-    @group = Group.find(params[:group_id])
-    @playlist = @group.group_playlists.create(playlist_params)
+    @group = Group.select(:id).find(params[:group_id])
+    @group.group_playlists.create(playlist_params)
 
-    @list_count = GroupPlaylist.where("group_id = ?", params[:group_id]).count
+    @playlist_list = GroupPlaylist.where("group_id = ?", params[:group_id])
+    @list_count = @playlist_list.count(:id)
     if(@list_count > 100)
-      @old_list = GroupPlaylist.where("group_id = ?", params[:group_id]).order('created_at ASC').first
+      @old_list = @playlist_list.select(:id).order('created_at ASC').first
       @old_list.destroy
     end
 
     redirect_to group_path(@group)
   end
 
-  def edit
-    @playlist = GroupPlaylist.find_by(id: params[:id], group_id: params[:group_id])
+  def show
+    @playlist = GroupPlaylist.select(:id, :name, :group_id).find_by(id: params[:id], group_id: params[:group_id])
   end
 
   def update
     @playlist = GroupPlaylist.find_by(id: params[:id], group_id: params[:group_id])
 
     if @playlist.update(playlist_params)
-      redirect_to user_playlist_path(@playlist.user_id, @playlist)
+      redirect_to group_group_playlist_path(@playlist.group_id, @playlist)
     else
       render :edit, status: :unprocessable_entity
     end
