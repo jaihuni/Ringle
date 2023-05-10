@@ -12,20 +12,35 @@ Things you may want to cover:
     ```
 
 * System dependencies
+    ```
+    Tested in Ubuntu 20.04.5 LTS
+    ```
 
 * Configuration
 
-* Database creation
-Sqlite3
+* Database
+    ```
+    Sqlite3
+    ```
 
 * Database initialization
+    ```
+    rails db:migrate
+    ```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+    ### if want adding example music data to db
+    enter console mode with
+    ```
+    rails console
+    ```
+    and
+    ```
+    load 'music_list.rb'
+    ```
 
 * Deployment instructions
+    ```
+    rails server
+    ```
 
-* ...
-
-load 'music_list.rb'
+* implemented function
