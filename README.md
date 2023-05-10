@@ -66,34 +66,34 @@ based on http server
     ```
 
     #### API
-    ```GET /users```
+    ```GET /users```<br/>
     유저 목록 조회
 
-    ```GET /users/:id```
+    ```GET /users/:id```<br/>
     유저 정보/플레이리스트 목록 조회
 
-    ```POST /users/:user_id/playlists/```
+    ```POST /users/:user_id/playlists/```<br/>
     유저 플레이리스트 추가
 
-    ```DELETE /users/:user_id/playlists/:id```
+    ```DELETE /users/:user_id/playlists/:id```<br/>
     유저 플레이리스트 삭제
 
-    ```GET /users/:user_id/playlists/:id```
+    ```GET /users/:user_id/playlists/:id```<br/>
     유저 플레이리스트 수록 음악 조회
 
-    ```POST /users/:user_id/playlists/:playlist_id/list_musics```
+    ```POST /users/:user_id/playlists/:playlist_id/list_musics```<br/>
     플레이리스트 음악 추가
 
-    ```POST /users/:user_id/playlists/:playlist_id/add_musics```
+    ```POST /users/:user_id/playlists/:playlist_id/add_musics```<br/>
     플레이리스트 음악 일괄 추가
     |parameter|type|description|
     |---|---|---|
     |input|array|추가할 음악의 id|
 
-    ```DELETE /users/:user_id/playlists/:playlist_id/list_musics/:id```
+    ```DELETE /users/:user_id/playlists/:playlist_id/list_musics/:id```<br/>
     플레이리스트 음악 삭제
 
-    ```DELETE /users/:user_id/playlists/:playlist_id/delete_musics```
+    ```DELETE /users/:user_id/playlists/:playlist_id/delete_musics```<br/>
     플레이리스트 음악 일괄 삭제
     |parameter|type|description|
     |---|---|---|
