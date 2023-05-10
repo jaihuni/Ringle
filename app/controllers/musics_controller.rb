@@ -62,7 +62,7 @@ class MusicsController < ApplicationController
     end
 
     if params[:sort] && params[:sort] == '3'
-      @musics = @musics.order('created_at DESC')
+      @musics = @musics.order('id DESC')
     end
 
     @musics = @musics.limit(1000)
