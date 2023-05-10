@@ -1,9 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+## initial setting
 
 * Ruby/Rails version
     ```
@@ -15,8 +12,6 @@ Things you may want to cover:
     ```
     Tested in Ubuntu 20.04.5 LTS
     ```
-
-* Configuration
 
 * Database
     ```
@@ -43,4 +38,68 @@ Things you may want to cover:
     rails server
     ```
 
-* implemented function
+## implemented function
+based on http server
+아래 지원하는 api url을 첨부하였으나, 실질적으로 http 서버로 운용되므로
+인터넷 브라우저 상으로 확인해 주시기 바랍니다
+
+* ### 음악조회/검색
+    #### related directory
+    ```
+    /app/controllers/musics_controller.rb
+    /app/views/musics
+    ```
+
+    #### API
+    ```GET /musics```
+    음원 목록 조회/검색
+    |parameter|type|description|
+    |---|---|---|
+    |keyword|string|검색어|
+    |sort|integer|1: 정확도순, 2: 인기순, 3: 최신순|
+
+* ### 개인 재생목록 관련
+    #### related directory
+    ```
+    /app/controllers/musics_controller.rb
+    /app/views/musics
+    ```
+
+    #### API
+    ```GET /users```
+    유저 목록 조회
+
+    ```GET /users/:id```
+    유저 정보/플레이리스트 목록 조회
+
+    ```POST /users/:user_id/playlists/```
+    유저 플레이리스트 추가
+
+    ```DELETE /users/:user_id/playlists/:id```
+    유저 플레이리스트 삭제
+
+    ```GET /users/:user_id/playlists/:id```
+    유저 플레이리스트 수록 음악 조회
+
+    ```POST /users/:user_id/playlists/:playlist_id/list_musics```
+    플레이리스트 음악 추가
+
+    ```POST /users/:user_id/playlists/:playlist_id/add_musics```
+    플레이리스트 음악 일괄 추가
+    |parameter|type|description|
+    |---|---|---|
+    |input|array|추가할 음악의 id|
+
+    ```DELETE /users/:user_id/playlists/:playlist_id/list_musics/:id```
+    플레이리스트 음악 삭제
+
+    ```DELETE /users/:user_id/playlists/:playlist_id/delete_musics```
+    플레이리스트 음악 일괄 삭제
+    |parameter|type|description|
+    |---|---|---|
+    |input|array|삭제할 음악의 playlist_music id|
+
+
+
+
+
