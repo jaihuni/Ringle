@@ -1,9 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+## initial setting
 
 * Ruby/Rails version
     ```
@@ -15,8 +12,6 @@ Things you may want to cover:
     ```
     Tested in Ubuntu 20.04.5 LTS
     ```
-
-* Configuration
 
 * Database
     ```
@@ -43,4 +38,14 @@ Things you may want to cover:
     rails server
     ```
 
-* implemented function
+## implemented function
+based on http server
+
+### 음악조회/검색
+    ```
+    GET /musics
+    ```
+    |parameter|description|
+    |---|---|
+    |keyword|string: 검색어|
+    |sort|integer: (1, 정확도순), (2, 인기순), (3, 최신순)|
