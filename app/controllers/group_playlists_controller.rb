@@ -28,9 +28,10 @@ class GroupPlaylistsController < ApplicationController
   end
 
   def destroy
-    @playlist = GroupPlaylist.find_by(id: params[:id], group_id: params[:group_id])
+    @group = Group.find(params[:group_id])
+    @playlist = @group.group_playlists.find(params[:id])
     @playlist.destroy
-    redirect_to user_path(@user), status: :see_other
+    redirect_to group_path(@group), status: :see_other
   end
 
   private
